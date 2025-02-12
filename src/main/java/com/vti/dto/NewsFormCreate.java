@@ -1,40 +1,32 @@
 package com.vti.dto;
 
 import java.sql.Date;
-import java.util.List;
-import com.vti.entity.Image;
+import com.vti.entity.Category;
 import com.vti.entity.News;
-import com.vti.entity.NewsSummary;
+import com.vti.entity.NewsDetail;
 
 public class NewsFormCreate {
 
 	private int id;
 	private String name;
-	private String content;
+	private String imageUrl;
 	private Date date;
-	private String header;
-	private String conclude;
-	private NewsSummary newsSummary;
-	private List<Image> image;
-
-	
-
-	public NewsFormCreate(int id, String name, String content, Date date, String header, String conclude,
-			NewsSummary newsSummary, List<Image> image) {
-		this.id = id;
-		this.name = name;
-		this.content = content;
-		this.date = date;
-		this.header = header;
-		this.conclude = conclude;
-		this.newsSummary = newsSummary;
-		this.image = image;
-	}
+	private NewsDetail newsDetail;
+	private Category category;
 
 	public NewsFormCreate() {
+
 	}
 
-	
+	public NewsFormCreate(int id, String name, String imageUrl, Date date, NewsDetail newsDetail, Category category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.imageUrl = imageUrl;
+		this.date = date;
+		this.newsDetail = newsDetail;
+		this.category = category;
+	}
 
 	public int getId() {
 		return id;
@@ -52,12 +44,12 @@ public class NewsFormCreate {
 		this.name = name;
 	}
 
-	public String getContent() {
-		return content;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public Date getDate() {
@@ -68,40 +60,24 @@ public class NewsFormCreate {
 		this.date = date;
 	}
 
-	public String getHeader() {
-		return header;
+	public NewsDetail getNewsDetail() {
+		return newsDetail;
 	}
 
-	public void setHeader(String header) {
-		this.header = header;
+	public void setNewsDetail(NewsDetail newsDetail) {
+		this.newsDetail = newsDetail;
 	}
 
-	public String getConclude() {
-		return conclude;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setConclude(String conclude) {
-		this.conclude = conclude;
-	}
-
-	public NewsSummary getNewsSummary() {
-		return newsSummary;
-	}
-
-	public void setNewsSummary(NewsSummary newsSummary) {
-		this.newsSummary = newsSummary;
-	}
-
-	public List<Image> getImage() {
-		return image;
-	}
-
-	public void setImage(List<Image> image) {
-		this.image = image;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public News toEntity() {
-		return new News(id, name, content, date, header, conclude,newsSummary, image);
+		return new News(id, name, imageUrl, date, newsDetail, category);
 	}
 
 }

@@ -1,64 +1,52 @@
 package com.vti.dto;
 
 import java.util.List;
-
 import com.vti.entity.Category;
-import com.vti.entity.NewsSummary;
+import com.vti.entity.News;
 
 public class CategoryFormCreate {
 
 	private int id;
 	private String name;
-	private List<NewsSummary> newsSummary;
-	
-	
-
-	
-	public CategoryFormCreate(int id, String name, List<NewsSummary> newsSummary) {
-
-		this.id = id;
-		this.name = name;
-		this.newsSummary = newsSummary;
-	}
-
+	private List<News> news;
 
 	public CategoryFormCreate() {
+
 	}
 
-	
-	
+	public CategoryFormCreate(int id, String name, List<News> news) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.news = news;
+	}
+
 	public int getId() {
 		return id;
 	}
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public String getName() {
 		return name;
 	}
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
-	public List<NewsSummary> getNewsSummary() {
-		return newsSummary;
+	public List<News> getNews() {
+		return news;
 	}
 
-
-	public void setNewsSummary(List<NewsSummary> newsSummary) {
-		this.newsSummary = newsSummary;
+	public void setNews(List<News> news) {
+		this.news = news;
 	}
-
 
 	public Category toEntity() {
-		return new Category(id,name,newsSummary);
+		return new Category(id, name, news);
 	}
 
 }

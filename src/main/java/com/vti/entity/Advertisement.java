@@ -1,18 +1,12 @@
 package com.vti.entity;
 
 import java.io.Serializable;
-import java.util.Date;
-
-import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "`Advertisement`")
@@ -27,23 +21,18 @@ public class Advertisement implements Serializable {
 	@Column(name = "`name`", length = 200)
 	private String name;
 
-	@Column(name = "`content`", length = 200)
-	private String content;
-
-	@Column(name = "`date`")
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp
-	private Date date;
-
-	public Advertisement(int id, String name, String content, Date date) {
-
-		this.id = id;
-		this.name = name;
-		this.content = content;
-		this.date = date;
-	}
+	@Column(name = "`image`", length = 200)
+	private String image;
 
 	public Advertisement() {
+
+	}
+
+	public Advertisement(int id, String name, String image) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.image = image;
 	}
 
 	public int getId() {
@@ -62,20 +51,12 @@ public class Advertisement implements Serializable {
 		this.name = name;
 	}
 
-	public String getContent() {
-		return content;
+	public String getImage() {
+		return image;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }

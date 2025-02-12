@@ -1,33 +1,26 @@
 package com.vti.dto;
 
 import java.io.Serializable;
-import com.vti.entity.News;
+import com.vti.entity.NewsDetail;
 
 @SuppressWarnings("serial")
 public class ImageDTO implements Serializable {
 
-	private String name;
 	private int id;
+	private String name;
 	private String url;
-	private News news;
-
-	public ImageDTO(String name, int id, String url, News news) {
-		this.name = name;
-		this.id = id;
-		this.url = url;
-		this.news = news;
-	}
+	private NewsDetail newsDetail;
 
 	public ImageDTO() {
-
+		super();
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
+	public ImageDTO(int id, String name, String url, NewsDetail newsDetail) {
+		super();
+		this.id = id;
 		this.name = name;
+		this.url = url;
+		this.newsDetail = newsDetail;
 	}
 
 	public int getId() {
@@ -38,6 +31,14 @@ public class ImageDTO implements Serializable {
 		this.id = id;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getUrl() {
 		return url;
 	}
@@ -46,12 +47,12 @@ public class ImageDTO implements Serializable {
 		this.url = url;
 	}
 
-	public News getNews() {
-		return news;
+	public NewsDetail getNewsDetail() {
+		return newsDetail;
 	}
 
-	public void setNews(News news) {
-		this.news = news;
+	public void setNewsDetail(NewsDetail newsDetail) {
+		this.newsDetail = newsDetail;
 	}
 
 }
