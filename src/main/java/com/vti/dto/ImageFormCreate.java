@@ -1,25 +1,25 @@
 package com.vti.dto;
 
 import com.vti.entity.Image;
-import com.vti.entity.News;
+import com.vti.entity.NewsDetail;
 
 public class ImageFormCreate {
 
 	private int id;
 	private String name;
 	private String url;
-	private News news;
+	private NewsDetail newsDetail;
 
-	public ImageFormCreate(int id, String name, String url, News news) {
+	public ImageFormCreate() {
+		
+	}
 
+	public ImageFormCreate(int id, String name, String url, NewsDetail newsDetail) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.url = url;
-		this.news = news;
-	}
-
-	public ImageFormCreate() {
-
+		this.newsDetail = newsDetail;
 	}
 
 	public int getId() {
@@ -46,15 +46,15 @@ public class ImageFormCreate {
 		this.url = url;
 	}
 
-	public News getNews() {
-		return news;
+	public NewsDetail getNewsDetail() {
+		return newsDetail;
 	}
 
-	public void setNews(News news) {
-		this.news = news;
+	public void setNewsDetail(NewsDetail newsDetail) {
+		this.newsDetail = newsDetail;
 	}
 
 	public Image toEntity() {
-		return new Image(id, name, url, news);
+		return new Image(id, name, url, newsDetail);
 	}
 }

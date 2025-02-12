@@ -23,26 +23,27 @@ public class Image implements Serializable {
 	@Column(name = "`id`")
 	private int id;
 
-	@Column(name = "`name`", length = 200)
+	@Column(name = "`name`", length = 300)
 	private String name;
 
-	@Column(name = "`url`", length = 200)
+	@Column(name = "`url`", length = 500)
 	private String url;
 
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "news_id")
-	private News news;
+	@JoinColumn(name = "newsDetail_id")
+	private NewsDetail newsDetail;
 
-	public Image(int id, String name, String url, News news) {
+	public Image() {
 
+	}
+
+	public Image(int id, String name, String url, NewsDetail newsDetail) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.url = url;
-		this.news = news;
-	}
-
-	public Image() {
+		this.newsDetail = newsDetail;
 	}
 
 	public int getId() {
@@ -69,12 +70,12 @@ public class Image implements Serializable {
 		this.url = url;
 	}
 
-	public News getNews() {
-		return news;
+	public NewsDetail getNewsDetail() {
+		return newsDetail;
 	}
 
-	public void setNews(News news) {
-		this.news = news;
+	public void setNewsDetail(NewsDetail newsDetail) {
+		this.newsDetail = newsDetail;
 	}
 
 }

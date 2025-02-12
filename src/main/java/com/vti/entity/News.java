@@ -2,20 +2,22 @@ package com.vti.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -31,45 +33,41 @@ public class News implements Serializable {
 	@Column(name = "`id`")
 	private int id;
 
-	@Column(name = "`name`", length = 200)
+	@Column(name = "`name`", length = 300)
 	private String name;
 
-	@Column(name = "`content`", length = 5000)
-	private String content;
+	@Column(name = "`imageUrl`", length = 300)
+	private String imageUrl;
 
 	@Column(name = "`date`")
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	private Date date;
 
-	@Column(name = "`header`", length = 500)
-	private String header;
-
-	@Column(name = "`conclude`", length = 200)
-	private String conclude;
-
 	@JsonIgnore
-	@OneToOne(mappedBy = "news",fetch = FetchType.LAZY)
-	private NewsSummary newsSummary;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "newsDetail_id", referencedColumnName = "id")
+	private NewsDetail newsDetail;
 
-	@OneToMany(mappedBy = "news")
-	@Fetch(FetchMode.SUBSELECT)
-	private List<Image> image;
 
-	public News(int id, String name, String content, Date date, String header, String conclude, NewsSummary newsSummary,
-			List<Image> image) {
-		this.id = id;
-		this.name = name;
-		this.content = content;
-		this.date = date;
-		this.header = header;
-		this.conclude = conclude;
-		this.newsSummary = newsSummary;
-		this.image = image;
-	}
+	@JsonIgnore 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Fetch(FetchMode.SELECT)
+	@JoinColumn(name = "category_id")
+	private Category category;
 
 	public News() {
 
+	}
+
+	public News(int id, String name, String imageUrl, Date date, NewsDetail newsDetail, Category category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.imageUrl = imageUrl;
+		this.date = date;
+		this.newsDetail = newsDetail;
+		this.category = category;
 	}
 
 	public int getId() {
@@ -88,12 +86,12 @@ public class News implements Serializable {
 		this.name = name;
 	}
 
-	public String getContent() {
-		return content;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public Date getDate() {
@@ -104,36 +102,20 @@ public class News implements Serializable {
 		this.date = date;
 	}
 
-	public String getHeader() {
-		return header;
+	public NewsDetail getNewsDetail() {
+		return newsDetail;
 	}
 
-	public void setHeader(String header) {
-		this.header = header;
+	public void setNewsDetail(NewsDetail newsDetail) {
+		this.newsDetail = newsDetail;
 	}
 
-	public String getConclude() {
-		return conclude;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setConclude(String conclude) {
-		this.conclude = conclude;
-	}
-
-	public NewsSummary getNewsSummary() {
-		return newsSummary;
-	}
-
-	public void setNewsSummary(NewsSummary newsSummary) {
-		this.newsSummary = newsSummary;
-	}
-
-	public List<Image> getImage() {
-		return image;
-	}
-
-	public void setImage(List<Image> image) {
-		this.image = image;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

@@ -28,16 +28,17 @@ public class Category implements Serializable {
 
 	@OneToMany(mappedBy = "category")
 	@Fetch(FetchMode.SUBSELECT)
-	private List<NewsSummary> newsSummary;
-
-	public Category(int id, String name, List<NewsSummary> newsSummary) {
-		this.id = id;
-		this.name = name;
-		this.newsSummary = newsSummary;
-	}
+	private List<News> news;
 
 	public Category() {
 
+	}
+
+	public Category(int id, String name, List<News> news) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.news = news;
 	}
 
 	public int getId() {
@@ -56,12 +57,12 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
-	public List<NewsSummary> getNewsSummary() {
-		return newsSummary;
+	public List<News> getNews() {
+		return news;
 	}
 
-	public void setNewsSummary(List<NewsSummary> newsSummary) {
-		this.newsSummary = newsSummary;
+	public void setNews(List<News> news) {
+		this.news = news;
 	}
 
 }

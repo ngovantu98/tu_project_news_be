@@ -2,23 +2,25 @@ package com.vti.dto;
 
 import java.io.Serializable;
 import java.util.List;
-import com.vti.entity.NewsSummary;
+import com.vti.entity.News;
+
 
 @SuppressWarnings("serial")
 public class CategoryDTO implements Serializable {
 
 	private String name;
 	private int id;
-	private List<NewsSummary> newsSummarys;
+	private List<News> news;
 
-	public CategoryDTO(String name, int id, List<NewsSummary> newsSummarys) {
+	public CategoryDTO(String name, int id, List<News> news) {
+
 		this.name = name;
 		this.id = id;
-		this.newsSummarys = newsSummarys;
+		this.news = news;
 	}
 
 	public CategoryDTO() {
-
+		super();
 	}
 
 	public String getName() {
@@ -37,12 +39,12 @@ public class CategoryDTO implements Serializable {
 		this.id = id;
 	}
 
-	public List<NewsSummary> getNewsSummarys() {
-		return newsSummarys;
+	public List<News> getNews() {
+		return news;
 	}
 
-	public void setNewsSummarys(List<NewsSummary> newsSummarys) {
-		this.newsSummarys = newsSummarys;
+	public void setNews(List<News> news) {
+		this.news = news;
 	}
 
 }

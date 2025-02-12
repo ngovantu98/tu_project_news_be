@@ -2,37 +2,31 @@ package com.vti.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
-import com.vti.entity.Image;
-import com.vti.entity.NewsSummary;
+import com.vti.entity.Category;
+import com.vti.entity.NewsDetail;
 
 @SuppressWarnings("serial")
 public class NewsDTO implements Serializable {
 
 	private int id;
 	private String name;
-	private String content;
+	private String imageUrl;
 	private Date date;
-	private String header;
-	private String conclude;
-	private NewsSummary newsSummary;
-	private List<Image> image;
+	private NewsDetail newsDetail;
+	private Category category;
 
-	public NewsDTO(int id, String name, String content, Date date, String header, String conclude,
-			NewsSummary newsSummary, List<Image> image) {
-		super();
+	public NewsDTO(int id, String name, String imageUrl, Date date, NewsDetail newsDetail, Category category) {
+	
 		this.id = id;
 		this.name = name;
-		this.content = content;
+		this.imageUrl = imageUrl;
 		this.date = date;
-		this.header = header;
-		this.conclude = conclude;
-		this.newsSummary = newsSummary;
-		this.image = image;
+		this.newsDetail = newsDetail;
+		this.category = category;
 	}
 
 	public NewsDTO() {
-
+	
 	}
 
 	public int getId() {
@@ -51,12 +45,12 @@ public class NewsDTO implements Serializable {
 		this.name = name;
 	}
 
-	public String getContent() {
-		return content;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public Date getDate() {
@@ -67,36 +61,20 @@ public class NewsDTO implements Serializable {
 		this.date = date;
 	}
 
-	public String getHeader() {
-		return header;
+	public NewsDetail getNewsDetail() {
+		return newsDetail;
 	}
 
-	public void setHeader(String header) {
-		this.header = header;
+	public void setNewsDetail(NewsDetail newsDetail) {
+		this.newsDetail = newsDetail;
 	}
 
-	public String getConclude() {
-		return conclude;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setConclude(String conclude) {
-		this.conclude = conclude;
-	}
-
-	public NewsSummary getNewsSummary() {
-		return newsSummary;
-	}
-
-	public void setNewsSummary(NewsSummary newsSummary) {
-		this.newsSummary = newsSummary;
-	}
-
-	public List<Image> getImage() {
-		return image;
-	}
-
-	public void setImage(List<Image> image) {
-		this.image = image;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }
