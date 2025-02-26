@@ -13,7 +13,7 @@ public class NewsDetailService implements INewsDetailService {
 	@Autowired
 	private INewsDetailRepository repository;
 
-	public List<NewsDetail> getAllNewsSummarys() {
+	public List<NewsDetail> getAllNewsDetails() {
 		return repository.findAll();
 	}
 
@@ -43,11 +43,7 @@ public class NewsDetailService implements INewsDetailService {
 		return null;
 	}
 
-	@Override
-	public List<NewsDetail> getAllNewsDetails() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 //	public List<NewsDetail> getNewsSummaryByType(String type) {
 //		return repository.findByType(type);

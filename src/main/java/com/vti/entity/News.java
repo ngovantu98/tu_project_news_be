@@ -5,10 +5,7 @@ import java.util.Date;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,13 +41,11 @@ public class News implements Serializable {
 	@CreationTimestamp
 	private Date date;
 
+	@OneToOne(mappedBy = "news",cascade = CascadeType.MERGE)
+	
+    private NewsDetail newsDetail;
+
 	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "newsDetail_id", referencedColumnName = "id")
-	private NewsDetail newsDetail;
-
-
-	@JsonIgnore 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@Fetch(FetchMode.SELECT)
 	@JoinColumn(name = "category_id")

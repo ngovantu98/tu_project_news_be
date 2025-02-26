@@ -2,21 +2,20 @@ package com.vti.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -38,11 +37,20 @@ public class NewsDetail implements Serializable {
 	@Column(name = "`content1`", length = 2000)
 	private String content1;
 
+	@Column(name = "`image1`", length = 2000)
+	private String image1;
+
 	@Column(name = "`content2`", length = 2000)
 	private String content2;
 
+	@Column(name = "`image2`", length = 2000)
+	private String image2;
+
 	@Column(name = "`content3`", length = 2000)
 	private String content3;
+
+	@Column(name = "`image3`", length = 2000)
+	private String image3;
 
 	@Column(name = "`content4`", length = 2000)
 	private String content4;
@@ -52,32 +60,29 @@ public class NewsDetail implements Serializable {
 	@CreationTimestamp
 	private Date date;
 
-	@OneToMany(mappedBy = "newsDetail")
-	@Fetch(FetchMode.SUBSELECT)
-	private List<Image> image;
+	@OneToOne
 	
-	@JsonIgnore
-	@OneToOne(mappedBy = "newsDetail")
-	
+	@JoinColumn(name = "news_id", referencedColumnName = "id")
 	private News news;
 
-
 	public NewsDetail() {
-		super();
+
 	}
 
-	public NewsDetail(int id, String name, String title, String content1, String content2, String content3,
-			String content4, Date date, List<Image> image, News news) {
+	public NewsDetail(int id, String name, String title, String content1, String image1, String content2, String image2,
+			String content3, String image3, String content4, Date date, News news) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.title = title;
 		this.content1 = content1;
+		this.image1 = image1;
 		this.content2 = content2;
+		this.image2 = image2;
 		this.content3 = content3;
+		this.image3 = image3;
 		this.content4 = content4;
 		this.date = date;
-		this.image = image;
 		this.news = news;
 	}
 
@@ -113,6 +118,14 @@ public class NewsDetail implements Serializable {
 		this.content1 = content1;
 	}
 
+	public String getImage1() {
+		return image1;
+	}
+
+	public void setImage1(String image1) {
+		this.image1 = image1;
+	}
+
 	public String getContent2() {
 		return content2;
 	}
@@ -121,12 +134,28 @@ public class NewsDetail implements Serializable {
 		this.content2 = content2;
 	}
 
+	public String getImage2() {
+		return image2;
+	}
+
+	public void setImage2(String image2) {
+		this.image2 = image2;
+	}
+
 	public String getContent3() {
 		return content3;
 	}
 
 	public void setContent3(String content3) {
 		this.content3 = content3;
+	}
+
+	public String getImage3() {
+		return image3;
+	}
+
+	public void setImage3(String image3) {
+		this.image3 = image3;
 	}
 
 	public String getContent4() {
@@ -145,14 +174,6 @@ public class NewsDetail implements Serializable {
 		this.date = date;
 	}
 
-	public List<Image> getImage() {
-		return image;
-	}
-
-	public void setImage(List<Image> image) {
-		this.image = image;
-	}
-
 	public News getNews() {
 		return news;
 	}
@@ -160,9 +181,5 @@ public class NewsDetail implements Serializable {
 	public void setNews(News news) {
 		this.news = news;
 	}
-
-//	@OneToOne(cascade = CascadeType.MERGE)
-//	@JoinColumn(name = "news_id")
-//	private News news;
 
 }

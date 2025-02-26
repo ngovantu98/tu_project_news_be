@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "`Category`")
 public class Category implements Serializable {
@@ -27,6 +29,7 @@ public class Category implements Serializable {
 	private String name;
 
 	@OneToMany(mappedBy = "category")
+	@JsonIgnore
 	@Fetch(FetchMode.SUBSELECT)
 	private List<News> news;
 
