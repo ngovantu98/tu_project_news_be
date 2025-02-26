@@ -2,6 +2,8 @@ package com.vti.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vti.entity.Category;
 import com.vti.entity.NewsDetail;
 
@@ -12,17 +14,17 @@ public class NewsDTO implements Serializable {
 	private String name;
 	private String imageUrl;
 	private Date date;
-	private NewsDetail newsDetail;
-	private Category category;
+ 
 
-	public NewsDTO(int id, String name, String imageUrl, Date date, NewsDetail newsDetail, Category category) {
+
+	public NewsDTO(int id, String name, String imageUrl, Date date) {
 	
 		this.id = id;
 		this.name = name;
 		this.imageUrl = imageUrl;
 		this.date = date;
-		this.newsDetail = newsDetail;
-		this.category = category;
+		
+	
 	}
 
 	public NewsDTO() {
@@ -61,20 +63,8 @@ public class NewsDTO implements Serializable {
 		this.date = date;
 	}
 
-	public NewsDetail getNewsDetail() {
-		return newsDetail;
-	}
+	
 
-	public void setNewsDetail(NewsDetail newsDetail) {
-		this.newsDetail = newsDetail;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+	
 
 }

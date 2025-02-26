@@ -12,7 +12,7 @@ public class ImageDTO implements Serializable {
 	private NewsDetail newsDetail;
 
 	public ImageDTO() {
-		super();
+	
 	}
 
 	public ImageDTO(int id, String name, String url, NewsDetail newsDetail) {

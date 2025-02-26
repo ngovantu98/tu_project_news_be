@@ -10,13 +10,13 @@ public class CategoryDTO implements Serializable {
 
 	private String name;
 	private int id;
-	private List<News> news;
+	
 
-	public CategoryDTO(String name, int id, List<News> news) {
+	public CategoryDTO(String name, int id ) {
 
 		this.name = name;
 		this.id = id;
-		this.news = news;
+		
 	}
 
 	public CategoryDTO() {
@@ -39,12 +39,6 @@ public class CategoryDTO implements Serializable {
 		this.id = id;
 	}
 
-	public List<News> getNews() {
-		return news;
-	}
-
-	public void setNews(List<News> news) {
-		this.news = news;
-	}
+	
 
 }

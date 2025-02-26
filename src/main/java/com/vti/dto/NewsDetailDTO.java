@@ -2,8 +2,8 @@ package com.vti.dto;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import com.vti.entity.Image;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vti.entity.News;
 
 @SuppressWarnings("serial")
@@ -13,30 +13,36 @@ public class NewsDetailDTO implements Serializable {
 	private String name;
 	private String title;
 	private String content1;
+	private String image1;
 	private String content2;
+	private String image2;
 	private String content3;
+	private String image3;
 	private String content4;
 	private Date date;
-	private List<Image> image;
 	private News news;
+	
 
-	public NewsDetailDTO(int id, String name, String title, String content1, String content2, String content3,
-			String content4, Date date, List<Image> image, News news) {
-		super();
+	public NewsDetailDTO(int id, String name, String title, String content1, String image1, String content2,
+			String image2, String content3, String image3, String content4, Date date,News news) {
+
 		this.id = id;
 		this.name = name;
 		this.title = title;
 		this.content1 = content1;
+		this.image1 = image1;
 		this.content2 = content2;
+		this.image2 = image2;
 		this.content3 = content3;
+		this.image3 = image3;
 		this.content4 = content4;
 		this.date = date;
-		this.image = image;
 		this.news = news;
+	
 	}
 
 	public NewsDetailDTO() {
-		super();
+
 	}
 
 	public int getId() {
@@ -71,6 +77,14 @@ public class NewsDetailDTO implements Serializable {
 		this.content1 = content1;
 	}
 
+	public String getImage1() {
+		return image1;
+	}
+
+	public void setImage1(String image1) {
+		this.image1 = image1;
+	}
+
 	public String getContent2() {
 		return content2;
 	}
@@ -79,12 +93,28 @@ public class NewsDetailDTO implements Serializable {
 		this.content2 = content2;
 	}
 
+	public String getImage2() {
+		return image2;
+	}
+
+	public void setImage2(String image2) {
+		this.image2 = image2;
+	}
+
 	public String getContent3() {
 		return content3;
 	}
 
 	public void setContent3(String content3) {
 		this.content3 = content3;
+	}
+
+	public String getImage3() {
+		return image3;
+	}
+
+	public void setImage3(String image3) {
+		this.image3 = image3;
 	}
 
 	public String getContent4() {
@@ -103,14 +133,6 @@ public class NewsDetailDTO implements Serializable {
 		this.date = date;
 	}
 
-	public List<Image> getImage() {
-		return image;
-	}
-
-	public void setImage(List<Image> image) {
-		this.image = image;
-	}
-
 	public News getNews() {
 		return news;
 	}
@@ -118,5 +140,8 @@ public class NewsDetailDTO implements Serializable {
 	public void setNews(News news) {
 		this.news = news;
 	}
+
+	
+	
 
 }

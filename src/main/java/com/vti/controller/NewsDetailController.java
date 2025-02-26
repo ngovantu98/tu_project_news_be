@@ -29,6 +29,7 @@ public class NewsDetailController {
 	@Autowired
 	private INewsDetailService service;
 
+
 	@GetMapping()
 	public List<NewsDetailDTO> getAllNewsDetails() {
 		List<NewsDetail> entities = service.getAllNewsDetails();
@@ -42,7 +43,7 @@ public class NewsDetailController {
 
 
 	@GetMapping(value = "/{id}")
-	public NewsDetail getNewsSummaryByID(@PathVariable(name = "id") int id) {
+	public NewsDetail getNewsDetailByID(@PathVariable(name = "id") int id) {
 		return service.getNewsDetailByID(id);
 	}
 
@@ -53,15 +54,15 @@ public class NewsDetailController {
 	}
 
 	@PutMapping(value = "/{id}")
-	public void updateNewsSummary(@PathVariable(name = "id") int id, @RequestBody NewsDetailFormCreate form) {
-		NewsDetail newsSummary = form.toEntity();
-		newsSummary.setId(id);
+	public void updateNewsDetail(@PathVariable(name = "id") int id, @RequestBody NewsDetailFormCreate form) {
+		NewsDetail newsDetail = form.toEntity();
+		newsDetail.setId(id);
 		
-		service.updateNewsDetail(newsSummary);
+		service.updateNewsDetail(newsDetail);
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public void deleteNewsSummary(@PathVariable(name = "id") int id) {
+	public void deleteNewsDetail(@PathVariable(name = "id") int id) {
 		service.deleteNewsDetail(id);
 		
 	}
